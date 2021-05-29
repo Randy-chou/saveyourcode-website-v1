@@ -29,21 +29,30 @@ header p {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    /* flex-start or stretch? */
+    align-items: stretch;
 }
 
-.standardbox {
-    position: relative;
-    text-align: center;
+.container{
     border-style: dashed;
-    margin: 2%;
+    margin: 0% 2% 30px 2%;
+    padding: 4px;
     flex: 1 0 26%;
     transition: flex-basis .5s linear;
 }
 
-.standardbox h2{
-    position: absolute;
-    left: 20%;
-    bottom: 87%;
+.standardbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    min-height: 100%;
+}
+
+.container .standardbox h2{
+    position: relative;
+    margin: -2rem 0 1rem 0;
     border-radius: 15px;
     background-color: white;
     padding: 1em 0 1em 0;
@@ -51,25 +60,34 @@ header p {
     border-style: solid;
 }
 
-.standardbox p {
+.container .standardbox p {
     width: 75%;
-    margin: 10% auto 2%;
-    width: 65%;
+    margin-bottom: 1rem;
 }
 
-.standardbox pre {
-    text-align: left;
+.container .standardbox .code-block {
+    flex-grow: 1;
+}
+
+.container .standardbox pre {
+    white-space: pre-wrap;
+    overflow: auto;
+    tab-size: 4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
     background: white;
+    text-align: left;
     width: 75%;
-    margin: auto;
-    margin-bottom: 10%;
+    padding: 6px;
+    margin-bottom: 10px;
     -moz-user-select: all;
     -webkit-user-select: all;
     -ms-user-select: all;
     user-select: all;
 }
 
-.standardbox pre code{
+.container .standardbox pre code{
     background: white;
     height: 80%;
 }
@@ -94,7 +112,7 @@ footer h2 {
 /* Media Screen Changes */
 
 @media screen and (max-width: 992px){
-    .standardbox {
+    .container {
         flex: 1 0 45%;
     }
 }
@@ -102,12 +120,5 @@ footer h2 {
 @media screen and (max-width: 768px){
     #work {
         flex-direction: column;
-    }
-
-    .standardbox {
-        margin: 3%;
-    }
-    .standardbox p {
-        margin-top: 7%;
     }
 }
